@@ -1,14 +1,13 @@
 program siliconeps
 
-use dopcasimir
-use spline
 use silicon
-use quadpack
 
 implicit none
 
+real(8), parameter:: pi=3.14159265359
+
 integer, parameter:: n=483 !number of rows in the file
-real(8):: matrixSil(n,3), epsteorSil(100)
+real(8):: matrixSil(n,3), epsteorSil(100), epsSilLor(100)
 real(8):: x(100) !frequency vector
 !variables needed fo Kr-Kr integral in cspint subroutine
 real(8)::funval(n),Spcoef(3,n), exint(n), work(n)
@@ -71,28 +70,20 @@ freq=20_8
 
 	end do
 
-!print *, epsSil
-
-!theory - Drude-Loretz model
-!parameters from the article
-eps0=11.87_8
-epsinf=1.035_8
-w0=6.6e+15_8
-
 !article formula
 
 do i=1,100
-    epsteorSil(i)=epsinf+(eps0-epsinf)*w0**2/(w0**2+x(i)**2);
+    epsteorSil(i)=epsSil_art(x(i))
+    epsSilLor(i)=oscillators_full(x(i))
 end do
-
- call spline_b_val(100, x, epsSil, x(30)+1.0e4_8, splineint)
-print *, 'splineint=', splineint, epsSil(30)
 
 open(unit=17, file='silicondata.txt', status='replace')
 
+100 format(e10.2, 3(f15.3))
+
 !write data in file
 do i=1,100
-write(17,*) x(i), epsSil(i), epsteorSil(i)
+write(17,100) x(i), epsSil(i), epsteorSil(i), epsSilLor(i)
 end do
 
 
