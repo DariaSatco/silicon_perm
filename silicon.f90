@@ -2,14 +2,14 @@ module silicon
 
 real(8), public:: freq
 !approximation of Im (eps)
-real(8), dimension(3), parameter::g1= (/9.0e31_8, 2.8e32_8, 8.2e31_8/) !(/5.92e16_8, 1.84e17_8, 5.4e16_8/) eV/s
-real(8), dimension(3), parameter::gammam1=(/1.6e15_8, 1.05e15_8, 5.4e14_8/)  !(/1.05_8, 0.69_8, 0.35_8/)    eV/s
-real(8), dimension(3), parameter::wm1= (/8.32e15_8, 6.37e15_8, 5.33e15_8/)   !(/5.48_8, 4.19_8, 3.51_8/)   eV/s
+real(8), dimension(3), parameter::g1= (/39.1, 121.7, 35.6/) !(eV)^2
+real(8), dimension(3), parameter::gammam1=(/1.05_8, 0.69_8, 0.35_8/)    !eV
+real(8), dimension(3), parameter::wm1=(/5.48_8, 4.19_8, 3.51_8/)   !eV
 
 !approximation of Re (eps)
-real(8), dimension(3), parameter::g2= (/1.6e32_8, 2.8e32_8, 8.5e31_8/)
-real(8), dimension(3), parameter::gammam2=(/2.5e15_8, 1.05e15_8, 5.7e14_8/)  !(/1.05_8, 0.69_8, 0.35_8/)    eV/s
-real(8), dimension(3), parameter::wm2= (/8.68e15_8, 6.37e15_8, 5.33e15_8/)   !(/5.48_8, 4.19_8, 3.51_8/)   eV/s
+real(8), dimension(3), parameter::g2= (/69.5, 121.7, 36.9/)  !(eV)^2
+real(8), dimension(3), parameter::gammam2=(/1.05_8, 0.69_8, 0.35_8/)    !eV
+real(8), dimension(3), parameter::wm2= (/5.48_8, 4.19_8, 3.51_8/)   !eV
 
 contains
 
