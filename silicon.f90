@@ -76,7 +76,7 @@ real(8):: eps0, epsinf, w0
 !parameters from the article
 eps0=11.87_8
 epsinf=1.035_8
-w0=6.6e15_8
+w0=4.34_8
 
 epsSil_art=epsinf+(eps0-epsinf)*w0**2/(w0**2+x**2)
 
